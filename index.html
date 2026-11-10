@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> Goldstein Noam – Portfolio</title>
+<meta name="description" content="Portfolio de Goldstein Noam : compétences, expériences et parcours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ECEEF4; --surface:#FFFFFF; --ink:#11142B; --muted:#585D7B;
+  --line:#D3D8E8; --accent:#3446F0; --on-accent:#FFFFFF; --tint:#DDE1FB;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1226; --surface:#181C3A; --ink:#E9EBFA; --muted:#A3A8C9;
+    --line:#2A2F57; --accent:#8E9BFF; --on-accent:#0F1226; --tint:#252B58;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1226; --surface:#181C3A; --ink:#E9EBFA; --muted:#A3A8C9;
+  --line:#2A2F57; --accent:#8E9BFF; --on-accent:#0F1226; --tint:#252B58;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--on-accent);padding:8px 14px;border-radius:999px;z-index:10}
+.skip:focus{left:8px}
+
+.shell{display:grid;grid-template-columns:340px minmax(0,1fr);max-width:1280px;margin:0 auto}
+
+/* ---------- Colonne identité ---------- */
+.side{position:sticky;top:0;height:100vh;padding:48px 40px;display:flex;flex-direction:column;gap:28px;overflow-y:auto}
+.avatar{width:96px;height:96px;border-radius:28px;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font:800 2rem var(--display);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.who .name{font:800 1.6rem/1.1 var(--display);margin:0 0 4px;letter-spacing:-.02em}
+.who .role{margin:0;color:var(--muted)}
+.who .place{margin:2px 0 0;color:var(--muted);font-size:.95rem}
+.status{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:6px 12px;border-radius:999px;background:var(--tint);font-size:.9rem;font-weight:500}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{text-decoration:none;padding:8px 0;color:var(--muted);font-weight:500;border-left:2px solid transparent;padding-left:14px;transition:color .15s,border-color .15s}
+.nav a:hover{color:var(--ink)}
+.nav a[aria-current="true"]{color:var(--ink);border-left-color:var(--accent)}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:14px}
+.socials{display:flex;flex-wrap:wrap;gap:6px 16px;list-style:none;padding:0;margin:0;font-size:.95rem}
+.socials a{text-underline-offset:4px}
+.theme{align-self:flex-start;font:500 .9rem var(--body);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+.theme:hover{border-color:var(--ink)}
+
+/* ---------- Contenu ---------- */
+main{padding:48px 56px 32px 24px;min-width:0}
+section{padding:72px 0 8px;border-top:1px solid var(--line)}
+section:first-child{border-top:0;padding-top:48px}
+h2{font:700 clamp(1.5rem,2.4vw,2rem)/1.15 var(--display);letter-spacing:-.02em;margin:0 0 28px}
+.measure{max-width:62ch}
+
+/* Hero */
+.hero h1{font:800 clamp(2.4rem,5.6vw,4.6rem)/1.02 var(--display);letter-spacing:-.035em;margin:0 0 28px;max-width:16ch;animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .lead{font-size:1.2rem;color:var(--muted);max-width:52ch;margin:0 0 32px}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.actions{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:12px 22px;border-radius:999px;border:1.5px solid var(--ink);transition:background .15s,color .15s}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+
+/* À propos */
+.about p{margin:0 0 1em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:32px 0 0;padding:0;list-style:none}
+.facts li{background:var(--surface);border-radius:14px;padding:16px 18px}
+.facts b{display:block;font:700 1.1rem var(--display)}
+.facts span{color:var(--muted);font-size:.92rem}
+
+/* Projets */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:-8px 0 28px}
+.chip{font:500 .9rem var(--body);padding:5px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+button.chip:hover{border-color:var(--ink)}
+button.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.projects{display:flex;flex-direction:column;gap:20px}
+.project{display:grid;grid-template-columns:240px minmax(0,1fr);gap:28px;background:var(--surface);border-radius:20px;padding:16px}
+.project[hidden]{display:none}
+.thumb{aspect-ratio:4/3;border-radius:12px;overflow:hidden;display:grid;place-items:center;font:800 3rem var(--display);color:var(--on-accent)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.project h3{font:700 1.35rem/1.2 var(--display);letter-spacing:-.01em;margin:6px 0 2px}
+.project .year{color:var(--muted);font-size:.92rem;margin:0 0 10px}
+.project .desc{margin:0 0 14px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0;margin:0 0 14px}
+.tags .chip{cursor:default;font-size:.82rem;padding:2px 10px;background:var(--tint);border-color:transparent}
+.plinks{display:flex;gap:18px;font-weight:600}
+.plinks a{text-underline-offset:4px}
+
+/* Compétences */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+.skills h3{font:700 1.05rem var(--display);margin:0 0 12px}
+.skills ul{list-style:none;padding:0;margin:0;display:flex;flex-wrap:wrap;gap:8px}
+.skills .chip{cursor:default;background:var(--surface);border-color:transparent}
+
+/* Compétence mise en avant : carte « ticket » */
+.ticket{--stub-w:230px;position:relative;display:grid;grid-template-columns:minmax(0,1fr) var(--stub-w);margin-top:44px;background:var(--surface);border-radius:20px;overflow:hidden}
+.ticket[hidden]{display:none}
+.ticket::before,.ticket::after{content:"";position:absolute;left:calc(100% - var(--stub-w) - 10px);width:22px;height:22px;border-radius:50%;background:var(--bg)}
+.ticket::before{top:-11px}
+.ticket::after{bottom:-11px}
+.t-main{padding:30px 32px}
+.t-main h3{font:800 1.5rem/1.1 var(--display);letter-spacing:-.02em;margin:0 0 12px}
+.t-main p{margin:0 0 18px;max-width:52ch}
+.t-main .tags{margin:0}
+.t-stub{list-style:none;margin:0;padding:30px 28px 30px 34px;border-left:2px dashed var(--line);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.t-stub li{position:relative;padding-left:28px;font:700 1rem/28px var(--display)}
+.t-stub li::before{content:"";position:absolute;left:0;top:8px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--surface)}
+.t-stub li:last-child::before{background:var(--accent)}
+.t-stub li:not(:last-child)::after{content:"";position:absolute;left:5px;top:20px;width:2px;height:34px;background:var(--line)}
+
+/* Compétence mise en avant : Cisco Packet Tracer (schéma réseau + texte) */
+.pt{display:grid;grid-template-columns:340px minmax(0,1fr);gap:32px;align-items:center;margin-top:20px;background:var(--surface);border-radius:20px;padding:24px 32px 24px 24px}
+.pt[hidden]{display:none}
+.pt-map{background-color:var(--bg);background-image:radial-gradient(var(--line) 1.2px,transparent 1.2px);background-size:16px 16px;border-radius:14px;padding:12px}
+.pt-map svg{display:block;width:100%;height:auto}
+.pt .nd{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.pt .lk{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pt .ic{fill:none;stroke:var(--accent);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pt .port{fill:var(--accent)}
+.pt .pkt{fill:var(--accent)}
+.pt .nt{font:600 10px var(--body);fill:var(--muted)}
+.pt-text h3{font:800 1.5rem/1.1 var(--display);letter-spacing:-.02em;margin:0 0 12px}
+.pt-text p{margin:0 0 18px;max-width:52ch}
+.pt-text .tags{margin:0}
+
+/* Compétence mise en avant : IA (texte + fenêtre de terminal) */
+.ai{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:28px;align-items:center;margin-top:20px;background:var(--surface);border-radius:20px;padding:30px 32px}
+.ai[hidden]{display:none}
+.ai h3{font:800 1.5rem/1.1 var(--display);letter-spacing:-.02em;margin:0 0 12px}
+.ai p{margin:0 0 18px;max-width:52ch}
+.ai .tags{margin:0}
+.term{background:#0B0E20;color:#E9EBFA;border:1px solid var(--line);border-radius:14px;overflow:hidden;font:500 .92rem/1.6 ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.term-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#151A38}
+.term-bar i{width:10px;height:10px;border-radius:50%;background:#3A4078}
+.term-bar i:first-child{background:#8E9BFF}
+.term-bar span{margin-left:8px;color:#A3A8C9;font-size:.8rem}
+.term-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:2px}
+.term-body .cmd{color:#A3A8C9}
+.term-body .use::before{content:"› ";color:#8E9BFF}
+.term-body .cursor{display:inline-block;width:.55em;height:1.05em;margin-left:3px;vertical-align:-.15em;background:#8E9BFF;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Expériences professionnelles */
+.xp{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.xp-card{background:var(--surface);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.xp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.xp-year{font:800 2.4rem/1 var(--display);letter-spacing:-.03em;color:var(--accent)}
+.xp-dur{font:600 .85rem var(--body);padding:4px 12px;border-radius:999px;background:var(--tint)}
+.xp-card h3{font:700 1.2rem/1.25 var(--display);margin:0}
+.xp-place{color:var(--muted);font-size:.92rem;margin:-10px 0 0}
+.xp-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px}
+.xp-list li{position:relative;padding-left:28px}
+.xp-list li::before{content:"";position:absolute;left:0;top:.38em;width:16px;height:16px;border-radius:5px;background:var(--tint)}
+.xp-list li::after{content:"";position:absolute;left:5.5px;top:calc(.38em + 2.5px);width:4px;height:8px;border:solid var(--accent);border-width:0 2px 2px 0;transform:rotate(45deg)}
+
+/* Parcours : vraie séquence chronologique */
+.journey{list-style:none;margin:0;padding:0}
+.step{display:grid;grid-template-columns:130px minmax(0,1fr);gap:24px;padding-bottom:32px;position:relative}
+.step::before{content:"";position:absolute;left:130px;top:10px;bottom:-10px;width:1px;background:var(--line);transform:translateX(12px)}
+.step:last-child::before{display:none}
+.step::after{content:"";position:absolute;left:130px;top:9px;width:9px;height:9px;border-radius:50%;background:var(--accent);transform:translateX(8px)}
+.step .when{color:var(--muted);font-weight:500;padding-top:2px}
+.step .what{padding-left:34px}
+.step h3{font:700 1.1rem var(--display);margin:0}
+.step .where{color:var(--muted);margin:0 0 6px;font-size:.95rem}
+.step p:last-child{margin:0}
+
+/* Diplômes et certifications */
+.dips{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.dip{display:grid;grid-template-columns:auto minmax(0,1fr);gap:20px;align-items:start;background:var(--surface);border-radius:20px;padding:24px}
+.dip-mark{width:68px;height:68px;border-radius:20px;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font:800 1.15rem var(--display);letter-spacing:.02em}
+.dip-mark.soft{background:var(--tint);color:var(--accent)}
+.dip .chip{display:inline-block;cursor:default;font-size:.8rem;padding:2px 10px;background:var(--tint);border-color:transparent;margin-bottom:8px}
+.dip h3{font:700 1.25rem/1.2 var(--display);margin:0 0 4px}
+.dip p{margin:0;color:var(--muted);font-size:.95rem}
+.dip .dip-year{color:var(--ink);font-weight:600;margin-top:8px}
+
+/* Veille technologique */
+.veille-theme{font:700 1.35rem/1.3 var(--display);letter-spacing:-.01em;margin:0 0 14px;max-width:36ch}
+.veille-head{margin-bottom:28px}
+.veille-head .chip{display:inline-block;cursor:default;background:var(--tint);border-color:transparent}
+.vsteps{display:flex;flex-direction:column;gap:10px}
+.vstep{background:var(--surface);border-radius:18px}
+.vstep summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:18px}
+.vstep summary::-webkit-details-marker{display:none}
+.vstep summary::after{content:"";margin-left:auto;flex:none;width:9px;height:9px;border:solid var(--muted);border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.vstep[open] summary::after{transform:rotate(225deg) translateY(-2px)}
+.vnum{flex:none;width:40px;height:40px;border-radius:12px;background:var(--tint);color:var(--accent);display:grid;place-items:center;font:800 1rem var(--display)}
+.vstep[open] .vnum{background:var(--accent);color:var(--on-accent)}
+.vlabel{display:block;font:700 1.05rem/1.3 var(--display)}
+.vsrc{display:block;color:var(--muted);font-size:.9rem}
+.vbody{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;padding:0 20px 20px}
+.vitem{border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:6px}
+.vmeta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;font-size:.85rem;color:var(--muted)}
+.vmeta b{color:var(--ink)}
+.vitem h4{font:700 1rem/1.3 var(--display);margin:0}
+.vitem p{margin:0;font-size:.95rem;color:var(--muted)}
+.vitem a{margin-top:auto;padding-top:6px;font-weight:600;font-size:.92rem;text-underline-offset:4px}
+.vconc{margin-top:24px;background:var(--accent);color:var(--on-accent);border-radius:20px;padding:28px 32px}
+.vconc h3{font:800 1.3rem/1.2 var(--display);letter-spacing:-.01em;margin:0 0 10px}
+.vconc p{margin:0;max-width:68ch}
+
+/* Épreuve E5 */
+.e5-card{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;background:var(--surface);border-radius:20px;padding:28px 32px}
+.e5-mark{width:88px;height:88px;border-radius:24px;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font:800 1.8rem var(--display);letter-spacing:.02em}
+.e5-card h3{font:800 1.5rem/1.1 var(--display);letter-spacing:-.02em;margin:0 0 12px}
+.e5-card p{margin:0 0 18px;max-width:56ch}
+.e5-card .tags{margin:0 0 20px}
+.e5-card .btn{margin:0}
+
+/* Contact */
+.contact .mail{display:inline-block;font:800 clamp(1.4rem,3.4vw,2.6rem)/1.1 var(--display);letter-spacing:-.025em;text-underline-offset:8px;text-decoration-thickness:3px;text-decoration-color:var(--accent);word-break:break-word}
+.contact p{margin:0 0 20px}
+footer{padding:56px 0 24px;color:var(--muted);font-size:.9rem}
+
+/* ---------- Barre de défilement : ordinateur portable ---------- */
+/* La barre native est masquée ; le défilement (molette, clavier, tactile) fonctionne toujours */
+html,*{scrollbar-width:none}
+*::-webkit-scrollbar{display:none}
+.scroller{position:fixed;top:14px;bottom:14px;right:6px;width:48px;z-index:20;touch-action:none;cursor:pointer;user-select:none}
+.scroller::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%);border-radius:2px;background:repeating-linear-gradient(to bottom,var(--line) 0 5px,transparent 5px 10px)}
+.scroller .fill{position:absolute;left:50%;top:0;width:2px;transform:translateX(-50%);border-radius:2px;background:var(--accent)}
+.laptop{position:absolute;left:0;top:0;width:48px;height:34px;cursor:grab;filter:drop-shadow(0 3px 5px rgba(17,20,43,.28))}
+.laptop:active{cursor:grabbing}
+.laptop svg{display:block;width:100%;height:100%;overflow:visible}
+.lp-lid{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.lp-screen{fill:var(--accent);transition:filter .15s}
+.laptop:hover .lp-screen{filter:brightness(1.2)}
+.lp-code{stroke:var(--on-accent);stroke-width:1.6;stroke-linecap:round;opacity:.9}
+.lp-base{fill:var(--ink)}
+.lp-notch{fill:var(--bg);opacity:.5}
+@media (max-width:900px){.scroller{display:none}}
+
+/* ---------- Mobile ---------- */
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .side{position:static;height:auto;padding:28px 22px 0;gap:20px}
+  .nav{flex-direction:row;flex-wrap:wrap;gap:4px 18px}
+  .nav a{border-left:0;padding:4px 0}
+  .nav a[aria-current="true"]{box-shadow:inset 0 -2px var(--accent)}
+  .side-foot{margin-top:0}
+  main{padding:8px 22px 24px}
+  .project{grid-template-columns:1fr}
+  .step{grid-template-columns:1fr;gap:2px}
+  .step::before,.step::after{display:none}
+  .step .what{padding-left:0}
+  .ticket{grid-template-columns:1fr}
+  .ticket::before,.ticket::after{display:none}
+  .t-stub{border-left:0;border-top:2px dashed var(--line);flex-direction:row;flex-wrap:wrap;gap:8px 24px;padding:20px 32px}
+  .t-stub li:not(:last-child)::after{display:none}
+  .ai{grid-template-columns:1fr;padding:24px}
+  .pt{grid-template-columns:1fr;padding:24px}
+  .e5-card{grid-template-columns:1fr;padding:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero h1{animation:none}
+  .term-body .cursor{animation:none}
+  .pt .pkt{display:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<div class="shell">
+  <aside class="side">
+    <div class="who">
+      <div class="avatar" id="avatar" aria-hidden="true"></div>
+      <div style="height:18px"></div>
+      <p class="name" id="name"></p>
+      <p class="role" id="role"></p>
+      <p class="place" id="place"></p>
+      <span class="status" id="status" hidden></span>
+    </div>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#competences">Compétences</a>
+      <a href="#experiences">Expériences</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#diplomes">Diplômes</a>
+      <a href="#veille">Veille</a>
+      <a href="#e5">E5</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="side-foot">
+      <ul class="socials" id="socials"></ul>
+      <button class="theme" id="theme" type="button">Thème sombre</button>
+    </div>
+  </aside>
+
+  <main id="contenu">
+    <section class="hero" id="accueil">
+      <h1 id="headline"></h1>
+      <p class="lead" id="lead"></p>
+      <div class="actions">
+        <a class="btn primary" href="#experiences">Voir mes expériences</a>
+        <a class="btn ghost" id="cta-mail" href="#contact">Me contacter</a>
+      </div>
+    </section>
+
+    <section class="about" id="apropos">
+      <h2>À propos</h2>
+      <div class="measure" id="about-text"></div>
+      <ul class="facts" id="facts"></ul>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences</h2>
+      <div class="skills" id="skills"></div>
+      <article class="ticket" id="ticket" hidden></article>
+      <article class="pt" id="pt" hidden>
+        <div class="pt-map" aria-hidden="true">
+          <svg viewBox="0 0 300 205" xmlns="http://www.w3.org/2000/svg">
+            <path class="lk" d="M150 42V96"/>
+            <path class="lk" d="M150 118V132H50V148"/>
+            <path class="lk" d="M150 118V148"/>
+            <path class="lk" d="M150 118V132H250V148"/>
+            <rect class="nd" x="128" y="8" width="44" height="34" rx="8"/>
+            <path class="ic" d="M137 19H163M159 15l4 4-4 4M163 31H137M141 27l-4 4 4 4"/>
+            <rect class="nd" x="122" y="96" width="56" height="22" rx="6"/>
+            <rect class="port" x="129" y="103" width="7" height="8" rx="1.5"/>
+            <rect class="port" x="141" y="103" width="7" height="8" rx="1.5"/>
+            <rect class="port" x="153" y="103" width="7" height="8" rx="1.5"/>
+            <rect class="port" x="165" y="103" width="7" height="8" rx="1.5"/>
+            <g class="nd-pc">
+              <rect class="nd" x="30" y="148" width="40" height="26" rx="4"/><path class="ic" d="M50 174V180M40 180H60"/>
+              <rect class="nd" x="130" y="148" width="40" height="26" rx="4"/><path class="ic" d="M150 174V180M140 180H160"/>
+              <rect class="nd" x="230" y="148" width="40" height="26" rx="4"/><path class="ic" d="M250 174V180M240 180H260"/>
+            </g>
+            <text class="nt" x="180" y="29">R1</text>
+            <text class="nt" x="186" y="111">SW1</text>
+            <text class="nt" x="50" y="198" text-anchor="middle">PC1</text>
+            <text class="nt" x="150" y="198" text-anchor="middle">PC2</text>
+            <text class="nt" x="250" y="198" text-anchor="middle">PC3</text>
+            <circle class="pkt" r="3.5"><animateMotion dur="1.6s" repeatCount="indefinite" path="M150 42V96"/></circle>
+            <circle class="pkt" r="3.5"><animateMotion dur="2.4s" begin="0.4s" repeatCount="indefinite" path="M150 118V132H50V148"/></circle>
+            <circle class="pkt" r="3.5"><animateMotion dur="2s" begin="0.9s" repeatCount="indefinite" path="M150 118V148"/></circle>
+            <circle class="pkt" r="3.5"><animateMotion dur="2.4s" begin="1.3s" repeatCount="indefinite" path="M150 118V132H250V148"/></circle>
+          </svg>
+        </div>
+        <div class="pt-text" id="pt-text"></div>
+      </article>
+      <article class="ai" id="ai" hidden></article>
+    </section>
+
+    <section id="experiences">
+      <h2>Expériences professionnelles</h2>
+      <div class="xp" id="xp"></div>
+    </section>
+
+    <section id="parcours">
+      <h2>Parcours</h2>
+      <ol class="journey" id="journey"></ol>
+    </section>
+
+    <section id="diplomes">
+      <h2>Diplômes et certifications</h2>
+      <div class="dips" id="dips"></div>
+    </section>
+
+    <section id="veille">
+      <h2>Veille technologique</h2>
+      <div id="veille-box"></div>
+    </section>
+
+    <section id="e5" hidden>
+      <h2>E5</h2>
+      <article class="e5-card" id="e5-box"></article>
+    </section>
+
+    <section class="contact" id="contact">
+      <h2>Contact</h2>
+      <p class="measure" id="contact-text"></p>
+      <a class="mail" id="contact-mail" href="#"></a>
+    </section>
+
+    <footer>© <span id="year"></span> <span id="footer-name"></span></footer>
+  </main>
+</div>
+
+<div class="scroller" id="scroller" aria-hidden="true">
+  <div class="fill" id="fill"></div>
+  <div class="laptop" id="laptop">
+    <svg viewBox="0 0 48 34" xmlns="http://www.w3.org/2000/svg">
+      <rect class="lp-lid" x="7.5" y="1.5" width="33" height="22" rx="3.5"/>
+      <rect class="lp-screen" x="10.5" y="4.5" width="27" height="16" rx="1.5"/>
+      <path class="lp-code" d="M13 9h9M13 12.5h14M13 16h7"/>
+      <path class="lp-base" d="M2 26h44l-2.2 4.6a2 2 0 0 1-1.8 1.4H6a2 2 0 0 1-1.8-1.4z"/>
+      <rect class="lp-notch" x="19" y="26" width="10" height="1.8" rx=".9"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   ✏️  C’EST ICI QUE TU REMPLIS TOUT LE PORTFOLIO
+   Modifie uniquement les textes entre guillemets. Le reste de la page
+   se construit automatiquement. Laisse "" pour masquer un élément.
+   ===================================================================== */
+const PORTFOLIO = {
+  name: "Goldstein Noam",
+  role: "Étudiant BTS SIO 1",                 // ← ton titre
+  location: "Paris, France",                  // ← ou ""
+  availability: "Disponible pour de nouveaux projets", // ← ou "" pour masquer
+  photo: "",                                      // ex. "assets/photo.jpg" (sinon : initiales)
+
+  // Accueil
+  headline: "Futur technicien en maintenance informatique.",
+  lead: "",                                       // texte sous le gros titre ("" = masqué)
+
+  // À propos : un élément = un paragraphe
+  about: [
+    "Étudiant en BTS SIO (option SISR), passionné par la maintenance informatique et par l’aide aux utilisateurs. J’aime diagnostiquer une panne, la résoudre et accompagner la personne jusqu’au bout."
+  ],
+  facts: [                                        // petits repères chiffrés (3 à 4 max)
+    { value: "3 ans",   label: "d’expérience" },
+    { value: "Français", label: "langues de travail" }
+  ],
+
+  // Compétences : groupes libres
+  skills: [
+    { group: "Informatique", items: ["Administration Windows", "Active Directory", "Gestion de parc & Support N1/N2", "Analyse de pannes informatiques"] },
+    { group: "Outils",       items: ["Cisco Packet Tracer", "Suite Office", "GitHub", "VS Code"] },
+    { group: "Design",       items: ["Identité visuelle", "UI"] },
+    { group: "Savoir-être",  items: ["Gestion du temps", "Communication", "Esprit d’équipe"] }
+  ],
+
+  // Compétence mise en avant (carte « ticket » sous les groupes). Mets ticketing: null pour la masquer.
+  ticketing: {
+    title: "Ticketing",
+    text: "J’ai appris à gérer et créer des tickets en entreprise, notamment via l’outil GLPI. Aujourd’hui, je sais suivre un ticket du début à la résolution et assurer un support utilisateur organisé.",
+    tags: ["GLPI", "Support utilisateur"],
+    steps: ["Création", "Suivi", "Résolution"]     // le cycle affiché à droite de la carte
+  },
+
+  // Expériences professionnelles (stages) : copie/colle un bloc { ... } pour en ajouter un
+  experiences: [
+    {
+      org: "Mairie de Chelles", place: "", year: "2026", duration: "5 semaines",
+      missions: [
+        "Gestion des tickets d’utilisateurs",
+        "Gestion du matériel informatique : remplacement de PC, écrans, claviers, souris, docks, etc."
+      ]
+    },
+    {
+      org: "Sorbonne-Université", place: "Paris", year: "2025", duration: "6 semaines",
+      missions: [
+        "Gestion des comptes utilisateurs : création/suppression de comptes, droits d’accès",
+        "Installation et dépannage d’imprimantes"
+      ]
+    },
+    {
+      org: "Sorbonne-Université", place: "Paris", year: "2024", duration: "6 semaines",
+      missions: [
+        "Installation et configuration des ordinateurs : Windows, logiciels, mises à jour, pilotes…"
+      ]
+    },
+    {
+      org: "Banque de France", place: "Paris", year: "2023", duration: "1 semaine",
+      missions: [
+        "Réparations d’ordinateurs",
+        "Support utilisateur"
+      ]
+    }
+  ],
+
+  // Compétence Cisco Packet Tracer (carte avec schéma réseau animé). Mets packetTracer: null pour la masquer.
+  packetTracer: {
+    title: "Cisco Packet Tracer",
+    text: "J’ai réalisé de nombreux TP avec Cisco Packet Tracer. Cela m’a permis de simuler des architectures réseau, configurer des équipements Cisco et renforcer ma compréhension du fonctionnement d’un réseau.",
+    tags: ["Simulation réseau", "Équipements Cisco", "TP"]
+  },
+
+  // Compétence IA (carte avec fenêtre de terminal). Mets ai: null pour la masquer.
+  ai: {
+    title: "IA : Intelligence Artificielle",
+    text: "J’ai une excellente maîtrise de plusieurs IA modernes comme ChatGPT, Claude et Gemini. Je les utilise pour coder, documenter, apprendre et accélérer ma productivité.",
+    tags: ["ChatGPT", "Claude", "Gemini"],
+    uses: ["Coder", "Documenter", "Apprendre", "Accélérer ma productivité"]   // lignes affichées dans le terminal
+  },
+
+  // Parcours : du plus récent au plus ancien
+  journey: [
+    { period: "2026-2027 – aujourd’hui", title: "BTS SIO 1", place: "Lycée Charles de Foucauld Paris 18ème", text: "Formation de Brevet de Technicien Supérieur en Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux. Cette formation me permet d'acquérir des compétences approfondies en administration système, gestion de réseaux, sécurité informatique et virtualisation."
+    },
+    { period: "2024 – 2026",        title: "Bac Pro CIEL", place: "Lycée Saint-Nicolas Paris 6ème", text: "J'ai souhaité faire un Bac Pro CIEL car j'avais pour ambition de travailler dans l'informatique. Durant ces 3 années, j'ai pu faire de la programmation, de l'électronique et du système réseaux." }
+  ],
+
+  // Diplômes et certifications : chaque bloc { ... } = une carte séparée
+  diplomas: [
+    {
+      kind: "Diplôme d’État", mark: "BAC",
+      title: "Bac Pro CIEL",
+      text: "Baccalauréat professionnel Cybersécurité, Informatique et réseaux, Électronique",
+      place: "Lycée Saint-Nicolas Paris 6ème",
+      year: "2026"                                // ← vérifie l’année d’obtention
+    },
+    {
+      kind: "Certification", mark: "PIX",
+      title: "Certification PIX",
+      text: "Certification des compétences numériques",
+      place: "Lycée Saint-Nicolas Paris 6ème",
+      year: "2026"                                    // ← ajoute l’année ou le niveau si tu veux
+    }
+  ],
+
+  // Veille technologique : chaque étape { ... } = une période avec ses sources
+  veille: {
+    theme: "L’implémentation de l’intelligence artificielle dans les entreprises",
+    period: "Suivi sur 2 ans : septembre 2024 – novembre 2026",
+    steps: [
+      { label: "Septembre – Octobre 2024", items: [
+        { source: "McKinsey", date: "12 septembre 2024", title: "The State of AI in 2024", text: "Adoption massive de l’IA générative, montée en charge des infrastructures cloud et GPU en entreprise.", url: "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2024" },
+        { source: "G7", date: "10 octobre 2024", title: "Rapport sur l’IA et les infrastructures numériques", text: "Accent sur les investissements en datacenters IA et infrastructures souveraines pour les entreprises.", url: "https://www.g7italy.it/en/documents/" }
+      ]},
+      { label: "Novembre – Décembre 2024", items: [
+        { source: "Le Monde Informatique", date: "18 novembre 2024", title: "L’IA accélère la modernisation des datacenters", text: "Besoin de nouveaux serveurs, GPU et systèmes de refroidissement adaptés à l’IA.", url: "https://www.lemondeinformatique.fr/" },
+        { source: "Gartner", date: "4 décembre 2024", title: "Prévisions IT 2025", text: "Les infrastructures IA deviennent un moteur majeur des dépenses IT en entreprise.", url: "https://www.gartner.com/en/newsroom" }
+      ]},
+      { label: "Janvier – Février 2025", items: [
+        { source: "PwC", date: "15 janvier 2025", title: "IA et pression énergétique des infrastructures", text: "Les entreprises doivent adapter leurs infrastructures pour maîtriser la consommation énergétique de l’IA.", url: "https://www.pwc.fr/fr/publications.html" },
+        { source: "AI Action Summit", date: "8 février 2025", title: "Investissements européens en IA", text: "Déploiement de « AI factories » pour les entreprises européennes.", url: "https://www.elysee.fr/emmanuel-macron/ai-action-summit" }
+      ]},
+      { label: "Mars – Avril 2025", items: [
+        { source: "Reuters", date: "19 mars 2025", title: "Les entreprises investissent dans les GPU pour l’IA", text: "Les GPU deviennent un composant clé des infrastructures d’entreprise.", url: "https://www.reuters.com/technology" },
+        { source: "Gartner", date: "9 avril 2025", title: "Croissance record des infrastructures de datacenters IA", text: "Forte hausse des investissements dans les infrastructures IA professionnelles.", url: "https://www.gartner.com/en/articles" }
+      ]},
+      { label: "Mai – Juin 2025", items: [
+        { source: "Oracle", date: "14 mai 2025", title: "Investissements cloud IA en Europe", text: "Renforcement des infrastructures cloud IA accessibles aux entreprises.", url: "https://www.oracle.com/news/" },
+        { source: "Accenture", date: "6 juin 2025", title: "Industrialiser l’IA en entreprise", text: "Passage de projets pilotes IA à des infrastructures stables et sécurisées.", url: "https://www.accenture.com/fr-fr/insights/artificial-intelligence" }
+      ]},
+      { label: "Juillet – Août 2025", items: [
+        { source: "NVIDIA", date: "11 juillet 2025", title: "Optimisation des infrastructures IA d’entreprise", text: "Amélioration du rendement GPU et réduction des coûts d’infrastructure IA.", url: "https://www.nvidia.com/en-us/news/" },
+        { source: "Harvard Business Review", date: "22 août 2025", title: "Why Hybrid Cloud Is Key for AI", text: "Les entreprises privilégient le cloud hybride pour leurs applications IA.", url: "https://hbr.org/" }
+      ]},
+      { label: "Septembre – Octobre 2025", items: [
+        { source: "McKinsey", date: "9 septembre 2025", title: "Scaling AI Across the Enterprise", text: "Difficultés de passage à l’échelle sans infrastructures adaptées.", url: "https://www.mckinsey.com/capabilities/quantumblack" },
+        { source: "Le Monde Informatique", date: "16 octobre 2025", title: "L’IA transforme les architectures IT", text: "Nouvelles architectures SI orientées IA (API, data platforms).", url: "https://www.lemondeinformatique.fr/" }
+      ]},
+      { label: "Novembre – Décembre 2025", items: [
+        { source: "Reuters", date: "21 novembre 2025", title: "Partenariats stratégiques IA en entreprise", text: "Alliances technologiques pour intégrer l’IA dans les infrastructures existantes.", url: "https://www.reuters.com/business" },
+        { source: "Gartner", date: "5 décembre 2025", title: "AI as a Core Enterprise Infrastructure", text: "L’IA devient un pilier central des infrastructures IT d’entreprise.", url: "https://www.gartner.com/en/newsroom" }
+      ]}
+    ],
+    conclusionTitle: "Conclusion de la veille (2024-2026)",
+    conclusion: "Entre 2024 et 2026, l’IA est passée d’une phase de test à une utilisation réelle et quotidienne dans les entreprises. On ne se contente plus de poser des questions à l’IA : on utilise désormais des agents autonomes capables de réaliser des tâches complexes pour gagner en efficacité. Pour les services informatiques, l’enjeu principal est devenu de fournir la puissance nécessaire tout en protégeant les données et en limitant la consommation d’énergie. En résumé, l’IA est devenue le cœur des systèmes d’information modernes."
+  },
+
+  // Épreuve E5 : carte avec lien cliquable vers le PDF. Mets e5: null pour la masquer.
+  // Le PDF doit être placé dans le MÊME dossier que ce fichier HTML (ou adapte le chemin dans « file »).
+  e5: {
+    title: "Tableau de synthèse – Épreuve E5",
+    text: "Épreuve E5 du BTS SIO : « Support et mise à disposition de services informatiques » (bloc 1, coefficient 4). Ce document récapitule les six compétences évaluées et le modèle de tableau de synthèse de mes réalisations professionnelles.",
+    tags: ["BTS SIO", "Bloc 1", "SISR", "Portfolio"],
+    file: "docs/tableau_synthese_epreuve_E5_BTS_SIO.pdf",
+    linkLabel: "Ouvrir le tableau de synthèse (PDF)"
+  },
+
+  // Contact
+  contactText: "Un projet, une question, une collaboration ? Écris-moi, je réponds rapidement.",
+  email: "noamgoldstein37@yahoo.com",
+  phone: "07 87 47 71 00",                        // ← ton numéro (ou "" pour le masquer)
+  socials: [                                      // affichés dans la colonne de gauche
+    { label: "GitHub",   url: "https://github.com/Nsk75zoo/noamportfolio.github.io" },
+   ]
+};
+/* ===================== FIN DE LA ZONE À REMPLIR ===================== */
+
+
+/* ---------- Construction de la page (pas besoin d’y toucher) ---------- */
+const $ = (s) => document.querySelector(s);
+const P = PORTFOLIO;
+
+function h(tag, props = {}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(props)) {
+    if (v == null || v === false || v === "") continue;
+    if (k === "class") e.className = v;
+    else if (k === "text") e.textContent = v;
+    else e.setAttribute(k, v);
+  }
+  kids.flat().forEach((k) => e.append(k));
+  return e;
+}
+function link(label, url, props = {}) {
+  const ext = /^https?:/i.test(url);
+  return h("a", { href: url, target: ext ? "_blank" : null, rel: ext ? "noopener noreferrer" : null, text: label, ...props });
+}
+const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+
+// Identité
+document.title = `${P.name} – Portfolio`;
+$("#name").textContent = P.name;
+$("#role").textContent = P.role;
+$("#place").textContent = P.location;
+$("#place").hidden = !P.location;
+if (P.availability) { $("#status").textContent = P.availability; $("#status").hidden = false; }
+if (P.photo) $("#avatar").append(h("img", { src: P.photo, alt: "" }));
+else $("#avatar").textContent = initials(P.name);
+P.socials.forEach((s) => $("#socials").append(h("li", {}, link(s.label, s.url))));
+
+// Accueil
+$("#headline").textContent = P.headline;
+$("#lead").textContent = P.lead;
+$("#lead").hidden = !P.lead;
+$("#cta-mail").href = P.email ? `mailto:${P.email}` : "#contact";
+
+// À propos
+P.about.forEach((t) => $("#about-text").append(h("p", { text: t })));
+P.facts.forEach((f) => $("#facts").append(h("li", {}, h("b", { text: f.value }), h("span", { text: f.label }))));
+
+// Compétences
+P.skills.forEach((g) => $("#skills").append(h("div", {},
+  h("h3", { text: g.group }),
+  h("ul", {}, g.items.map((i) => h("li", { class: "chip", text: i }))))));
+
+// Compétence mise en avant (carte ticket)
+if (P.ticketing) {
+  const T = P.ticketing;
+  $("#ticket").append(
+    h("div", { class: "t-main" },
+      h("h3", { text: T.title }),
+      h("p", { text: T.text }),
+      h("ul", { class: "tags" }, (T.tags || []).map((t) => h("li", { class: "chip", text: t })))),
+    h("ol", { class: "t-stub", "aria-label": "Cycle d’un ticket" }, (T.steps || []).map((s) => h("li", { text: s }))));
+  $("#ticket").hidden = false;
+}
+
+// Compétence Cisco Packet Tracer
+if (P.packetTracer) {
+  const T = P.packetTracer;
+  $("#pt-text").append(
+    h("h3", { text: T.title }),
+    h("p", { text: T.text }),
+    h("ul", { class: "tags" }, (T.tags || []).map((t) => h("li", { class: "chip", text: t }))));
+  $("#pt").hidden = false;
+}
+
+// Compétence IA (carte avec terminal)
+if (P.ai) {
+  const A = P.ai;
+  $("#ai").append(
+    h("div", {},
+      h("h3", { text: A.title }),
+      h("p", { text: A.text }),
+      h("ul", { class: "tags" }, (A.tags || []).map((t) => h("li", { class: "chip", text: t })))),
+    h("div", { class: "term", "aria-hidden": "true" },
+      h("div", { class: "term-bar" }, h("i"), h("i"), h("i"), h("span", { text: "ia — terminal" })),
+      h("div", { class: "term-body" },
+        h("span", { class: "cmd", text: "$ utiliser --ia" }),
+        (A.uses || []).map((u) => h("span", { class: "use", text: u })),
+        h("span", { class: "cmd" }, "$ ", h("span", { class: "cursor" })))));
+  $("#ai").hidden = false;
+}
+
+// Expériences professionnelles
+(P.experiences || []).forEach((x) => $("#xp").append(h("article", { class: "xp-card" },
+  h("div", { class: "xp-top" }, h("span", { class: "xp-year", text: x.year }), h("span", { class: "xp-dur", text: x.duration })),
+  h("h3", { text: x.org }),
+  h("p", { class: "xp-place", text: x.place }),
+  h("ul", { class: "xp-list" }, x.missions.map((m) => h("li", { text: m }))))));
+document.querySelectorAll(".xp-place").forEach((e) => { if (!e.textContent) e.remove(); });
+
+// Parcours
+P.journey.forEach((s) => $("#journey").append(h("li", { class: "step" },
+  h("div", { class: "when", text: s.period }),
+  h("div", { class: "what" }, h("h3", { text: s.title }), h("p", { class: "where", text: s.place }), h("p", { text: s.text })))));
+
+// Diplômes et certifications
+(P.diplomas || []).forEach((d, i) => $("#dips").append(h("article", { class: "dip" },
+  h("div", { class: "dip-mark" + (i ? " soft" : ""), "aria-hidden": "true", text: d.mark }),
+  h("div", {},
+    h("span", { class: "chip", text: d.kind }),
+    h("h3", { text: d.title }),
+    d.text ? h("p", { text: d.text }) : "",
+    d.place ? h("p", { text: d.place }) : "",
+    d.year ? h("p", { class: "dip-year", text: d.year }) : ""))));
+
+// Veille technologique
+if (P.veille) {
+  const V = P.veille, box = $("#veille-box");
+  box.append(h("div", { class: "veille-head" },
+    h("p", { class: "veille-theme", text: V.theme }),
+    h("span", { class: "chip", text: V.period })));
+  box.append(h("div", { class: "vsteps" }, V.steps.map((st, i) => h("details", { class: "vstep", open: i === 0 ? "open" : null },
+    h("summary", {},
+      h("span", { class: "vnum", "aria-hidden": "true", text: String(i + 1).padStart(2, "0") }),
+      h("span", {}, h("span", { class: "vlabel", text: st.label }), h("span", { class: "vsrc", text: st.items.map((x) => x.source).join(" · ") }))),
+    h("div", { class: "vbody" }, st.items.map((it) => h("article", { class: "vitem" },
+      h("div", { class: "vmeta" }, h("b", { text: it.source }), h("span", { text: it.date })),
+      h("h4", { text: it.title }),
+      h("p", { text: it.text }),
+      link("Consulter la source", it.url))))))));
+  box.append(h("div", { class: "vconc" }, h("h3", { text: V.conclusionTitle }), h("p", { text: V.conclusion })));
+}
+
+// Épreuve E5 (lien cliquable vers le PDF)
+if (P.e5) {
+  const E = P.e5;
+  $("#e5-box").append(
+    h("div", { class: "e5-mark", "aria-hidden": "true", text: "E5" }),
+    h("div", {},
+      h("h3", { text: E.title }),
+      h("p", { text: E.text }),
+      h("ul", { class: "tags" }, (E.tags || []).map((t) => h("li", { class: "chip", text: t }))),
+      h("a", { class: "btn primary", href: E.file, target: "_blank", rel: "noopener noreferrer", text: E.linkLabel || "Ouvrir le PDF" })));
+  $("#e5").hidden = false;
+} else {
+  const l = document.querySelector('#nav a[href="#e5"]'); if (l) l.remove();
+}
+
+// Contact & pied de page
+$("#contact-text").textContent = P.contactText;
+const cm = $("#contact-mail");
+cm.textContent = P.email; cm.href = `mailto:${P.email}`;
+$("#year").textContent = new Date().getFullYear();
+$("#footer-name").textContent = P.name;
+
+// Navigation : section active
+const links = [...document.querySelectorAll("#nav a")];
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((en) => {
+    if (en.isIntersecting) links.forEach((a) => a.setAttribute("aria-current", a.getAttribute("href") === `#${en.target.id}` ? "true" : "false"));
+  });
+}, { rootMargin: "-40% 0px -55% 0px" });
+document.querySelectorAll("main section").forEach((s) => io.observe(s));
+
+// Barre de défilement « ordinateur portable » (glisser le portable ou cliquer sur le rail)
+(() => {
+  const rail = $("#scroller"), lap = $("#laptop"), fill = $("#fill"), doc = document.documentElement;
+  const maxScroll = () => Math.max(0, doc.scrollHeight - innerHeight);
+  const room = () => Math.max(1, rail.clientHeight - lap.offsetHeight);
+  function update() {
+    const max = maxScroll();
+    rail.style.visibility = max > 0 ? "visible" : "hidden";
+    const y = (max ? Math.min(1, scrollY / max) : 0) * room();
+    lap.style.transform = `translateY(${y}px)`;
+    fill.style.height = `${y + lap.offsetHeight / 2}px`;
+  }
+  addEventListener("scroll", update, { passive: true });
+  addEventListener("resize", update);
+  new ResizeObserver(update).observe(document.body);
+  let drag = null;
+  lap.addEventListener("pointerdown", (e) => {
+    lap.setPointerCapture(e.pointerId);
+    drag = { y: e.clientY, top: scrollY };
+    e.preventDefault(); e.stopPropagation();
+  });
+  lap.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    scrollTo({ top: drag.top + ((e.clientY - drag.y) / room()) * maxScroll(), behavior: "instant" });
+  });
+  const stop = () => { drag = null; };
+  lap.addEventListener("pointerup", stop);
+  lap.addEventListener("pointercancel", stop);
+  rail.addEventListener("pointerdown", (e) => {
+    const p = (e.clientY - rail.getBoundingClientRect().top - lap.offsetHeight / 2) / room();
+    scrollTo({ top: Math.min(1, Math.max(0, p)) * maxScroll(), behavior: "smooth" });
+  });
+  update();
+})();
+
+// Thème clair / sombre
+const root = document.documentElement, tbtn = $("#theme");
+const isDark = () => root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+const sync = () => { tbtn.textContent = isDark() ? "Thème clair" : "Thème sombre"; };
+try { const saved = localStorage.getItem("theme"); if (saved) root.dataset.theme = saved; } catch (e) {}
+sync();
+tbtn.addEventListener("click", () => {
+  root.dataset.theme = isDark() ? "light" : "dark";
+  try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+  sync();
+});
+</script>
+</body>
+</html>
